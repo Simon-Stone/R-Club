@@ -1,0 +1,25 @@
+---
+title: "Intro to R"
+output: html_notebook
+---
+
+```{r}
+library(gplots)
+
+UVM <- read.csv("data/UVM.csv")
+
+Counts <- UVM[ , 4:21]
+
+rownames(Counts) <- UVM$Gene.Name
+
+boxplot(Counts)
+
+```
+
+
+```{r}
+Clog2 <- log2(Counts)
+boxplot(Clog2)
+plot(Clog2$h1, Clog2$h1.1)
+heatmap.2(as.matrix(Clog2))
+```
